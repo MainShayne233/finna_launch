@@ -9,7 +9,9 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
-Twilio.connect('AC90b194b55a886219f15cd006cf0b068b', 'd741fa0be8a8483f5a13c530f260ddfc')
+Twilio.connect(ENV['TWILIO_SID'], ENV['TWILIO_AUTH_TOKEN'])
+TWILIO_NUM = ENV['TWILIO_NUM']
+MY_NUM = ENV['MY_NUM']
 require 'openwfe/util/scheduler'
 include OpenWFE
 scheduler = Scheduler.new

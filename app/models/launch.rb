@@ -1,7 +1,5 @@
 class Launch < ApplicationRecord
 
-
-
   def self.scrape_launches
     Launch.destroy_all
 
@@ -24,9 +22,9 @@ class Launch < ApplicationRecord
 
     launches = launches_this_week
     unless launches.empty?
-      msg = "There #{launches.size > 1 ? "are #{launches.size} launches" : 'is one launch'} this week!\n\n"
+      msg = "There #{launches.size > 1 ? "are #{launches.size} launches" : 'is one launch'} this week!\n"
       msg << launches.map{|launch| "#{launch.mission}\n#{launch.date}\n#{launch.window}"}.join("\n\n")
-      # Twilio::Sms.message(8442422517, 3212929136, msg)
+      puts Twilio::Sms.message(TWILIO_NUM, MY_NUM, msg)
     end
 
   end
